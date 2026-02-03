@@ -1,86 +1,67 @@
 # Corticon Rules Management System - Copilot Instructions
 
 ## Project Overview
-This is a full-stack web application for managing business rules and decision  services, built with React/TypeScript
-frontend and NestJS backend. The system implements Corticon as an AI-driven business rules management platform.
+Full-stack web application for managing business rules and decision services.
+- **Frontend**: React/TypeScript with KendoUI (port 3000)
+- **Backend**: NestJS with TypeORM/SQLite (port 3001)
+- **Testing**: Playwright E2E
 
-## API Architecture
-Refer to [Architecture.md](Architecture.md)
-
-## Critical Setup Requirements
-
-### Prerequisites
-- **Windows environment** We use Windows as the main development environment. When running commands,
-  make sure to use Windows command syntax. For example, use `REM` for comments in batch files and command prompt.
-  Use `;` to chain commands and DO NOT USE `&`.
-  
-## Build & Development Process
-
-### CRITICAL: Always work from correct directories
-- **Root operations**: Use `<developerSpecificPath>\Webapp\`
-- **Backend operations**: Use `<developerSpecificPath>\Webapp\backend\`
-- **Frontend operations**: Use `<developerSpecificPath>\Webapp\frontend\`
-
-### Installation & Setup (First Time)
-```cmd
-REM Navigate to webapp root
-cd C:\dev3\web-ui\Webapp
-
-REM Install all dependencies (backend + frontend)
-npm install
-
+## Project Structure
+```
+Webapp/
+├── backend/          # NestJS API server
+├── frontend/         # React app with Vite
+└── package.json      # Root scripts
 ```
 
-### Development Server Startup
-**ALWAYS start backend first, then frontend** - frontend depends on backend 
-API.
+## Critical Rules
 
+### Environment
+- **Node.js 18+** required
+- **Windows-first**: Use `REM` for comments, `;` to chain commands (not `&`)
+
+### Startup Order (CRITICAL)
+1. Backend first: `cd Webapp\backend ; npm run start:dev`
+2. Frontend second: `cd Webapp\frontend ; npm run dev`
+
+### Build Verification
+**ALWAYS build after code changes:**
 ```cmd
-REM Terminal 1 - Backend server
-cd C:\dev3\web-ui\Webapp\backend
-npm run start:dev
-
-REM Terminal 2 - Frontend server (after backend is running)
-cd C:\dev3\web-ui\Webapp\frontend
-npm run dev
+cd Webapp\backend ; npm run build
+cd Webapp\frontend ; npm run build
 ```
 
-### Build Process
-```cmd
-REM Backend build
-cd C:\dev3\web-ui\Webapp\backend
-npm run build
+### Database Management
+- Development DB: `backend/rules_management.db`
+- Before testing: `npm run db:switch-to-clean`
+- After testing: `npm run db:restore-dev`
 
-REM Frontend build
-cd C:\dev3\web-ui\Webapp\frontend
-npm run build
-```
+### Testing Workflow
+1. Switch to clean DB
+2. Start servers (backend first)
+3. Run tests: `npm run test:chromium`
+4. Restore dev DB
 
-## Critical Rules for Agents
+## Agent Rules
 
-1. **ALWAYS check Node.js version first** - must be 18+
-2. **ALWAYS install dependencies** before building or starting servers
-3. **ALWAYS start backend before frontend** - frontend depends on backend API
-4. **ALWAYS use proper directory paths** - many commands are directory-sensitive
-5. **ALWAYS restore development database** after testing (`npm run db:restore-dev`)
-6. **NEVER run build commands without fixing TypeScript errors first**
-7. **ALWAYS run the build after making code changes** - verify compilation succeeds:
-   - Frontend: `cd Webapp\frontend; npm run build`
-   - Backend: `cd Webapp\backend; npm run build`
-   - This ensures TypeScript errors are caught before committing changes
-8. **ALWAYS Preserve git history** if you refactor something that moves files make sure to 
-   "preserve git history" instead of just copying files around and deleting the original.
-9. **TRUST THESE INSTRUCTIONS** - only search for additional info if instructions are incomplete or incorrect
-10. **ALWAYS Create diagram as files and use Mermaid syntax**.
-11. **ALWAYS Use `;` to chain commands in CMD**, for example: cd .. ; dir
+1. **ALWAYS** check Node.js version first (must be 18+)
+2. **ALWAYS** install dependencies before building
+3. **ALWAYS** start backend before frontend
+4. **ALWAYS** build after code changes
+5. **ALWAYS** restore dev database after testing
+6. **ALWAYS** use KendoUI React components
+7. **ALWAYS** add `data-testid` attributes for testability
+8. **ALWAYS** preserve git history when moving files
+9. **NEVER** run builds without fixing TypeScript errors first
 
-Use this information to minimize exploration time and avoid common pitfalls.
+## Documentation
 
-### Documentation
-1. ALWAYS create general documentation in the toplevel /Documentation folder
-2. ALWAYS use mermaid syntax for diagrams
-3. ALWAYS keep individual text lines to 100 characters or less for readability and easy diffing.
-4. ALWAYS - When a feature is added and before a pull request is done, create
-  a readme.md in the /Documentation/changes/<new features> subfolder.  
-  Where <new features> follows a specific pattern. For example: 2025-01-15_ProjectCardView.
-  But make sure the readme.md is kept to a strict minimum as this is the first item we review in a pull request.
+- Create docs in `/Documentation` folder
+- Use Mermaid for diagrams
+- Max 100 chars per line
+- New features: `/Documentation/changes/YYYY-MM-DD_FeatureName/readme.md`
+
+## API Communication
+- Frontend calls `/api/*` on port 3000
+- Vite proxy forwards to `http://localhost:3001/api/*`
+- Use service layer in `frontend/src/services/`

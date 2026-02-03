@@ -1,6 +1,4 @@
 ---
-name: 'Frontend React Guidelines'
-description: 'Conventions for React/TypeScript frontend development with KendoUI'
 applyTo: 'Webapp/frontend/src/**/*.{ts,tsx}'
 ---
 

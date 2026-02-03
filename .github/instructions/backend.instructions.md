@@ -1,6 +1,4 @@
 ---
-name: 'Backend NestJS Guidelines'
-description: 'Conventions for NestJS backend development including controllers, services, and DTOs'
 applyTo: 'Webapp/backend/src/**/*.ts'
 ---
 

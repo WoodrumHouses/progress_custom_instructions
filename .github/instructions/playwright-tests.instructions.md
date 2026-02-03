@@ -1,6 +1,4 @@
 ---
-name: 'Playwright Test Guidelines'
-description: 'Conventions for writing E2E tests with Playwright'
 applyTo: 'Webapp/frontend/tests/**/*.{ts,spec.ts}'
 ---
 
