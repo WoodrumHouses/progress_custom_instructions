@@ -1,0 +1,33 @@
+{
+  "name": "corticon-webapp",
+  "version": "1.0.0",
+  "description": "Corticon Rules Management System - Full Stack Application",
+  "private": true,
+  "scripts": {
+    "install": "cd backend && npm install && cd ../frontend && npm install",
+    "start:backend": "cd backend && npm run start:dev",
+    "start:frontend": "cd frontend && npm run dev",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "build": "npm run build:backend && npm run build:frontend",
+    "test": "cd frontend && npm run test",
+    "test:chromium": "cd frontend && npm run test:chromium",
+    "test:firefox": "cd frontend && npm run test:firefox",
+    "test:webkit": "cd frontend && npm run test:webkit",
+    "test:headed": "cd frontend && npm run test:headed",
+    "test:ui": "cd frontend && npm run test:ui",
+    "db:inspect": "cd backend && node debugTools/inspect-db.js",
+    "db:switch-to-clean": "cd backend && node test-tools/setup-test.js --clean --no-server",
+    "db:switch-to-qa": "cd backend && node test-tools/setup-test.js --no-server",
+    "db:restore-dev": "cd backend && node test-tools/cleanup-test.js --no-server"
+  },
+  "keywords": [
+    "corticon",
+    "rules",
+    "management",
+    "nestjs",
+    "react"
+  ],
+  "author": "",
+  "license": "UNLICENSED"
+}

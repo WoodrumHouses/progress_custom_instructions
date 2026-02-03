@@ -1,0 +1,58 @@
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.dashboard-welcome {
+  color: #666;
+  margin-bottom: 32px;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.dashboard-stat-card {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #4fc3f7;
+}
+
+.dashboard-recent h2 {
+  color: #1a1a2e;
+  margin-bottom: 16px;
+}
+
+.recent-projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.recent-project-card h3 {
+  margin: 0 0 8px 0;
+  color: #1a1a2e;
+}
+
+.recent-project-card p {
+  margin: 0;
+  color: #666;
+}
+
+.no-data {
+  color: #999;
+  font-style: italic;
+}
