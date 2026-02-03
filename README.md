@@ -40,9 +40,9 @@ different levels of specificity:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                    GLOBAL INSTRUCTIONS                               │
-│            .github/copilot-instructions.md                           │
-│                                                                      │
+│                    GLOBAL INSTRUCTIONS                              │
+│            .github/copilot-instructions.md                          │
+│                                                                     │
 │   • Always loaded for every file in the workspace                   │
 │   • Contains project-wide rules, conventions, and critical info     │
 │   • Defines startup order, build commands, environment requirements │
@@ -50,9 +50,9 @@ different levels of specificity:
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                  SCOPED INSTRUCTIONS                                 │
-│           .github/instructions/*.instructions.md                     │
-│                                                                      │
+│                  SCOPED INSTRUCTIONS                                │
+│           .github/instructions/*.instructions.md                    │
+│                                                                     │
 │   • Applied based on file path matching (applyTo pattern)           │
 │   • Inherit and extend global instructions                          │
 │   • Provide domain-specific guidance                                │
